@@ -70,12 +70,13 @@ public class CustomerServiceORM implements ICustomerService{
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
+            remove(id);
 
 //            Customer customer1 = customer;
 //            customer1.setName(customer.getName());
 //            customer1.setAddress(customer.getAddress());
 //            session.saveOrUpdate(customer);
-            session.save(, customer)
+            session.saveOrUpdate(customer);
 
             transaction.commit();
 
@@ -94,7 +95,20 @@ public class CustomerServiceORM implements ICustomerService{
 
     @Override
     public void remove(int id) {
-
+        Customer customer = findById(id);
+        if (customer != null) {
+            entityManager.remove(customer);
+//            Session session = sessionFactory.openSession();
+//           session.remove(customer);
+        }
     }
+
+    @Override
+    public void delete(int id) {
+        String queryStr = "DELETE  FROM Customer AS c WHERE c.id =:ha";
+        Session session = sessionFactory.openSession();
+        session.createQuery(queryStr, Customer.class).setParameter("ha", id);
+    }
+
 
 }

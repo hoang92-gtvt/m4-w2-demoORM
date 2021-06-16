@@ -4,6 +4,7 @@ import model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -55,5 +56,10 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
+    @GetMapping("/{id1}/delete")
+    public  String delete(@PathVariable int id1){
+        customerService.delete(id1);
+        return "redirect:/customers";
+    }
 
 }
