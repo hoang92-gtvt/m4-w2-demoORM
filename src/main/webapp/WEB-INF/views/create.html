@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-      <form method="post" th:object="${c}">
+      <form method="post" th:object="${c}" >
           <input th:field="${c.name}" placeholder="name">
           <input th:field="*{address}" placeholder="address">
           <input th:field="*{email}" placeholder="email">
