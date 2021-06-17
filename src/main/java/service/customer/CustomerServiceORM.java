@@ -70,17 +70,18 @@ public class CustomerServiceORM implements ICustomerService{
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
-            remove(id);
 
-//            Customer customer1 = customer;
+
+//            Customer customer1 = findById(id);
+//
 //            customer1.setName(customer.getName());
 //            customer1.setAddress(customer.getAddress());
-//            session.saveOrUpdate(customer);
-            session.saveOrUpdate(customer);
+//            customer1.setEmail(customer.getEmail());
+//            customer1.setImg(customer.getImg());
 
+
+            session.update(customer);
             transaction.commit();
-
-//            return customer1;
         } catch (Exception e){
             if(transaction != null){
                 transaction.rollback();

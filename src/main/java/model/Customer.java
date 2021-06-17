@@ -22,6 +22,10 @@ public class Customer {
     public Customer() {
     }
 
+    public Customer(String name) {
+        this.name = name;
+    }
+
     public Customer(int id, String name, String email, String address, String img) {
         this.id = id;
         this.name = name;
